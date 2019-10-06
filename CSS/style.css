@@ -1,0 +1,130 @@
+body {
+	background-color: #A1CDE1;
+	font-family: 'Turret Road', cursive;
+	font-size: 35%;
+}
+
+.gamePlayContainer {
+	display: grid;
+	height: 100vh;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	grid-template-areas: "playerone playertwo"
+}
+
+
+.playerOne {
+	display: grid;
+	grid-area: playerone;
+	height: 100vh;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-areas: 
+	"riderone onecard onecard"
+	"onestamina onecard onecard"
+	"onespeed onebuttons onedistance"
+}
+
+.playerOnerRider {
+	grid-area: riderone;
+}
+
+
+.playerOneCard {
+	grid-area: onecard;
+
+}
+
+.playerOneCardImage {
+	
+}
+
+.playerOneCardDescription {
+
+}
+
+.playerOneStamina {
+	grid-area: onestamina;
+}
+
+
+.playerOneSpeedDisplay{
+	grid-area: onespeed;
+}
+
+.playerOneButtons {
+	grid-area: onebuttons;
+
+}
+
+.attackButton, .tempoButton, .recoverButton {
+	border-color: grey;
+	border-width: 5px;
+	
+}
+
+
+
+.playerOneDistance {
+	grid-area: onedistance;
+}
+
+.playerTwo {
+	display: grid;
+	grid-area: playertwo;
+	height: 100vh;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-areas: 
+	"twocard twocard ridertwo"
+	"twocard twocard twostamina"
+	"twodistance twobuttons twospeed"
+}
+
+.playerTwoRider {
+	grid-area: ridertwo;
+}
+
+.playerTwoCard {	
+	grid-area: twocard;
+}
+
+.playerTwoCardImage {
+
+}
+
+.playerTwoCardDescription {
+
+}
+
+.playerTwoStamina {
+	grid-area: twostamina;
+}
+
+.playerTwoSpeedDisplay {
+	grid-area: twospeed;
+}
+
+.playerTwoPaceButtons {
+
+}
+
+.playerTwoPaceAttack {
+	
+	
+}
+
+.playerTwoPaceTempo { 
+
+}
+
+.playerTwoPaceRecover{
+
+}
+
+.playerTwoDistance {
+	grid-area: twodistance;
+}
+
+
+
