@@ -1,5 +1,24 @@
 
 
+// class Player {
+// 	constructor(name, flats, climbs, descents, location) {
+// 		this.name = name;
+// 		this.flats = flats;
+// 		this.climbs = climbs;
+// 		this.descents = descents;
+// 		this.location = location;
+// 	}
+
+// 	riderSkills() {
+// 		if(this.location === 'flats')...
+// 	}
+// }
+
+// function playGame() {
+// 	player1.location = ''
+// 	payer1.riderSkills()
+// }
+
 
 //Objects///////////////////////////////////////////////////
 //Course//////////////////////////////////////////
@@ -78,7 +97,7 @@ const ridersArray = [
 ]
 
 const peletonArray = [
-	{	name: "peleton"
+	{	name: "peleton",
 		flats: 3,
 		climbs: 3,
 		descents: 3
@@ -172,222 +191,184 @@ const peletonArray = [
 
 // //class playerTwoDisplayDistance
 // let playerTwoDisplayDist
+// function startGame () {
+// 	const startInterval = setInterval(() => {
 
-
-///////////////////////////////////////////////////////////
-
-//Classes///////////////////////////////////////////////
-//Ask if a classes would be best for 
-//players 1 & 2
-
-////////////////////////////////////////////////////////
-
-//Functions///////////////////////////////////////////
-//Distance Functions//////////////////////////////////
-
-// function distanceRemaining() {
-// 	let distTimer = setInterval(gameCounter, pace * 10);
+// 	}, )
 // }
-
-// function peletonDist() {
 	
-// }
+function riderSkills(flats, climbs, descents) {
 
-function pOneDistDisplay() {
-	
-	let distance = distTrav - totalDistance
-	
+//riderOterrain needs to become rider.terrain based on rider objects/player classes. 
+	flats = 4;
+	climbs = 5;
+	descents = 2;
 
-	let distTimer = setInterval(gameCounter, pace * 10);
-
-		function gameCounter() {
-			$(".playerOneDisplayDistance").html(`distance remaining: ${distance--}`);
-			if (distance < 0) {
-				console.log(`p1 wins`);
-				clearInterval(distTimer);
-			} 
-			
-		}
-}
-
-
-// function pTwoDistDisplay() {
-// 	//declare function
-// 	let pTwoTotalDistance = totalDistance;
-// 	pTwoPace;
-
-// 	let distTimer = setInterval(gameCounter, pTwoSpeed * 10);
-
-// 		function gameCounter() {
-// 			$(".playerTwoDisplayDistance").html(`P2 distance remaining: ${pTwoDistance--}`);
-// 			if (pTwoDistance < 0) {
-// 				console.log(`p2 wins`);
-// 				clearInterval(distTimer);
-// 			} 
-			
-// }
-
-function pace() {
-
-	$(.attackButton).on('click', (e) => {
-		pace = speed * 1.15;
-		// stamina === staminaDecrease;
-
-	$(.tempoButton).on('click', (e) => {
-		pace = speed;
-		// stamina === staminaFreeze;
-
-	$(.recoverButton).on('click', (e) => {
-			pace == speed * .85;
-			// stamina === staminaIncrease;
-	} 
-}
-
-
-function speed() {
-	//defining speeds on different terrain
-	const speedFlats = 45;
-	const speedClimbs = 25;
-	const speedDescents = 85;
-
-	if (location === "flats") {
-		speed = speedFlats;
-	} else if (location === "climbs") {
-		speed = speedClimbs;
-	} else if (location === "descents") {
-		speed = speedDescents;
-	}
-}
-
-
-// peletonSpeed() {
-// 	if peletonLocation === flats {
-// 		peletonSpeed = speedFlats
-// 	} else if peletonLocation === climbs {
-// 		peletonSpeed = speedClimbs;
-// 	} else if peletonLocation === descents {
-// 		peletonSpeed === speedDescents;
-// 	}
-// }
-
-
-
-
-
-// //function: riderSpeed
-// function riderSpeed() {
-// 	if (riderLocation = flats) {
-// 		riderSpeed = riderFlats
-// 	}else if (riderLocation = climbs) {
-// 		riderSpeed = riderClimbs
-// 	}else if (riderLocation = descents) {
-// 		riderSpeed = riderDescents
-// 	}
-
-// }
-
-
-
-function riderSkills() {
-
-let riderFlats;
-let riderClimbs;
-let riderDescents;
+const speedFlats = 45;
+const speedClimbs = 25;
+const speedDescents = 85;
 
 	//calculating rider speed on flats
-	if (location === 'flats') {
-		if rider.flats === 5 {
-			riderFlats === speedFlats * 1.2
-		} 	else if (rider.flats === 4) {
-				riderFlats === speedFlats * 1.1 {
-		}	else if (rider.flats === 3) {
-				riderFlats === speedFlats * 1 {
-		}	else if (rider.flats === 2) {
-				riderFlats === speedFlats * .9 {
-		}	else if (rider.flats === 1) {
-				riderFlats === speedFlats * .8 {
+		if (flats === 5) {
+			riderFlats = speedFlats * 1.2
+		} 	else if (flats === 4) {
+				riderFlats = speedFlats * 1.1;
+		}	else if (flats === 3) {
+				riderFlats = speedFlats * 1;
+		}	else if (flats === 2) {
+				riderFlats = speedFlats * .9;
+		}	else if (flats === 1) {
+				riderFlats = speedFlats * .8 ;
 		}
-   }
+		console.log(`flats: ${riderFlats}`);
+   
 
 		//calculating rider speed on climbs
-	else if (location === 'climbs') { 	
-		if rider.climbs === 5 {
-			riderClimbs === speedClimbs * 1.2
-		} 	else if (rider.climbs === 4) {
-				riderClimbs === speedClimbs * 1.1 {
-		}	else if (rider.climbs === 3) {
-				riderClimbs === speedClimbs * 1 {
-		}	else if (rider.climbs === 2) {
-				riderClimbs === speedClimbs * .9 {
-		}	else if (rider.climbs === 1) {
-				riderClimbs === speedClimbs * .8 {
+		if (climbs === 5) {
+			riderClimbs = speedClimbs * 1.2
+		} 	else if (climbs === 4) {
+				riderClimbs = speedClimbs * 1.1;
+		}	else if (climbs === 3) {
+				riderClimbs = speedClimbs * 1;
+		}	else if (climbs === 2) {
+				riderClimbs = speedClimbs * .9;
+		}	else if (climbs === 1) {
+				riderClimbs = speedClimbs * .8;
 		}
-	}
+		console.log(`climbs: ${riderClimbs}`);
+	
 		//calculating rider speed on descents
-	else if (location === 'descents') 
-		if rider.descents === 5 {
-			riderDescents === peletonDescents * 1.2
-		} 	else if (rider.descents === 4) {
-				riderDescents === peletonDescents * 1.1 {
-		}	else if (rider.descents === 3) {
-				riderDescents === peletonDescents * 1 {
-		}	else if (rider.descents === 2) {
-				riderDescents === peletonDescents * .9 {
-		}	else if (rider.descents === 1) {
-				riderDescents === peletonDescents * .8 {
+		if (descents === 5) {
+			riderDescents = speedDescents * 1.2
+		} 	else if (descents === 4) {
+				riderDescents = speedDescents * 1.1;
+		}	else if (descents === 3) {
+				riderDescents = speedDescents * 1;
+		}	else if (descents === 2) {
+				riderDescents = speedDescents * .9;
+		}	else if (descents === 1) {
+				riderDescents = speedDescents * .8;
 		}
+		console.log(`descents: ${riderDescents}`);
+		speed(riderFlats, riderClimbs, riderDescents);
 	}
+
+
+riderSkills();
+// // }
+function speed(riderFlats, riderClimbs, riderDescents) {
+	//defining speeds on different terrain
+	
+
+	let location = "flats";
+
+	if (location === "flats") {
+		speed = riderFlats;
+		console.log(`speed ${speed}`)
+	} else if (location === "climbs") {
+		speed = riderClimbs;
+		console.log(`speed ${speed}`)
+	} else if (location === "descents") {
+		speed = riderDescents;
+		console.log(`speed ${speed}`)
+	}
+}
+
+
+let playerStamina = 100;
+let pPace = speed;
+let paceButton;
+
+	$(".attackButton").on('click', () => {
+		if (playerStamina > 10) {
+			pPace = speed * 1.15;
+			paceButton = "attack";
+			pacing(pPace);
+		}
+	});
+
+
+		// stamina === staminaFreeze;
+	$(".tempoButton").on('click', () => {
+		pPace = speed; 
+		paceButton = "tempo";
+		console.log(`pPace ${pPace}`);
+		pacing(pPace);
+	});
+
+		// stamina === staminaIncrease;
+	$(".recoverButton").on('click', () => {
+		pPace = speed * .85;
+		paceButton = "recover";
+		console.log(`pPace ${pPace}`);
+		pacing(pPace);
+	}); 
+
+
+function pacing(pPace) {
+	pPace = Math.floor(pPace);
+	console.log(pPace);
+	$(".playerOneDisplayPace").html(`pace: ${pPace}km/h`);
+	pOneDistDisplay(pPace);
 
 }
 
-//pickRider function///////////////////////////////
+let totalDistance = 298;
+let distance = totalDistance
+let distanceInterval;
 
-//players 1 & 2 select their riders
+function pOneDistDisplay(pPace) {
 
-// function pickRider() {
+	let inter = (pPace - 100) * -10;
+	clearInterval(distanceInterval);
+	distanceInterval = setInterval(()=> {
+	
+	console.log(`inter = ${inter}`)
+	
+		if (distance <= 0) {
+			clearInterval(distanceInterval);		} 
+		$(".playerOneDisplayDistance").html(`distance remaining: ${distance--}`);			
+	}, inter);
+}
 
+
+
+
+function riderDisplayStamina(pPace) {
+	
+	$(".playerOneStamina").html(`Stamina: ${playerStamina}%`);
+
+	let staminaCounter = setInterval(()=> {
+
+		if (paceButton === "attack" && playerStamina >= 0) {
+			$(".playerOneStamina").html(`Stamina: ${playerStamina--}%`);
+
+		} else if (paceButton === "tempo") {
+			$(".playerOneStamina").html(`Stamina: ${playerStamina}%`); 
+				
+		} else if (paceButton === "recover" && playerStamina <= 100) {
+				$(".playerOneStamina").html(`Stamina: ${playerStamina++}%`);
+				
+		}
+			
+		if (playerStamina === 0){
+			$(".playerOneStamina").html(`Stamina: ${playerStamina}%`);
+			pPace = speed; 
+			paceButton = "tempo";
+			pacing(pPace);
+			
+
+		}
+	}, 50)
+}	
+
+riderDisplayStamina();
+
+
+// function declareWinner(winner) {
+// 	alert(`${winner} Has won! Chapeau!`);
+// 	location.reload();
 // }
-
-
-
-
-function riderCardDisplay() {
-
-}
-
-
-
-
-let staminaCounter = setInterval(riderStamina, 1000);
-
-function riderStamina() {
-	if (riderLocation === peletonLocation) {
-		riderStaminaVar = staminaCounter;
-	} else if (riderLocation !== peletonLocation) {
-		
-		if (staminaDecrease) {
-		let riderStaminaVar = staminaCounter * -1;
-	 
-	 	} else if (staminaFreeze) {
-		clearInterval(staminaCounter);
-		
-		} else if (staminaIncrease) {
-		let riderStaminaVar = staminaCounter
-		}
-	}
-}
-
-
-function riderDisplayStamina() {
-	//(staminaBar).html()
-
-}
-
-
-function declareWinner(winner) {
-	alert(`${winner} Has won! Chapeau!`);
-	location.reload();
-}
 
 
 

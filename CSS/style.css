@@ -58,6 +58,7 @@ body {
 }
 
 .attackButton, .tempoButton, .recoverButton {
+	height: 50px;
 	border-color: grey;
 	border-width: 5px;
 	
