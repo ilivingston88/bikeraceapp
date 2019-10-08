@@ -279,31 +279,29 @@ let playerStamina = 100;
 let pPace = speed;
 let paceButton;
 
+
+	// stamina === staminaDecrease; 
 	$(".attackButton").on('click', () => {
-		if (playerStamina > 10) {
-			pPace = speed * 1.15;
-			paceButton = "attack";
-			pacing(pPace);
-		}
+		pPace = speed * 1.15;
+		paceButton = "attack";
+		pacing(pPace);
 	});
 
 
-		// stamina === staminaFreeze;
+	// stamina === staminaFreeze;
 	$(".tempoButton").on('click', () => {
 		pPace = speed; 
 		paceButton = "tempo";
-		console.log(`pPace ${pPace}`);
 		pacing(pPace);
 	});
 
-		// stamina === staminaIncrease;
+	// stamina === staminaIncrease;
 	$(".recoverButton").on('click', () => {
 		pPace = speed * .85;
 		paceButton = "recover";
-		console.log(`pPace ${pPace}`);
 		pacing(pPace);
 	}); 
-
+	
 
 function pacing(pPace) {
 	pPace = Math.floor(pPace);
@@ -356,7 +354,7 @@ function riderDisplayStamina(pPace) {
 			pPace = speed; 
 			paceButton = "tempo";
 			pacing(pPace);
-			
+			playerStamina++;
 
 		}
 	}, 50)
