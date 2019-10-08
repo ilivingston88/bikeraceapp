@@ -9,72 +9,31 @@
 // 		this.location = location;
 // 	}
 
-// 	riderSkills() {
-// 		if(this.location === 'flats')...
-// 	}
-// }
-
-// function playGame() {
-// 	player1.location = ''
-// 	payer1.riderSkills()
+// 	// riderSkills() {
+// 	// 	if(this.location === 'flats')
 // }
 
 
-//Objects///////////////////////////////////////////////////
-//Course//////////////////////////////////////////
-function courseMilanSR(player) {
-		let totalDistance = 298;
-		let distTrav = totalDistance;
-		let location;
+// let playerOne = new Player("One");
+// let playerTwo = new Player("Two");
 
-		if (distTrav > 0 && distTrav < 100) {
-			 location = "flat";
-		} else if (distTrav >= 100 && distTrav < 145) {
-			location = "climb";
-		} else if (distTrav >= 145  && distTrav < 155) {
-			 location = "descent";
-		} else if (distTrav >= 155 && distTrav < 170) {
-			location = "flat";
-		} else if (distTrav >= 170 && distTrav < 180) {
-			location = "climb";
-		} else if (distTrav >= 180 && distTrav < 190) {
-			location = "descent";
-		} else if (distTrav >= 190 && distTrav < 250) {
-			location = "flat";
-		} else if (distTrav >= 250 && distTrav < 255) {
-			location = "climb";
-		} else if (distTrav >= 255 && distTrav < 260) {
-			location = "descent";
-		} else if (distTrav >= 260 && distTrav < 264) {
-			location = "flat";
-		} else if (distTrav >= 264 && distTrav < 269) {
-			location = "climb";
-		} else if (distTrav >= 269 && distTrav < 274) {
-			location = "descent";
-		} else if (distTrav >= 274 && distTrav < 286) {
-			location = "flat";
-		} else if (distTrav >= 286 && distTrav < 289) {
-			location = "climb";
-		} else if (distTrav >= 289 && distTrav < 295) {
-			location = "descent";
-		} else if (distTrav >= 295 && distTrav < 298) {
-			location = "flat";
-		} else if (distTrav === totalDistance) {
-			//winner is declared
-		}
+// // function playGame() {
+// // 	player1.location = ''
+// // 	payer1.riderSkills()
+// // }
 
-}		
+// function chooseRider() {
 
 
-//Riders
+	//playerOne & playerTwo have Card screens populated with info from array;
+	//playerOnene selects a rider using keys 1,2,3,4.
+		//if playerOne selects rider, that rider becomes unavailable to playerTwo.
+	//playerTwo selects from remaining riders.
 
-// const playerOneRider {
-
-//
-
-// const playerTwoRider {
 
 // }
+
+
 
 const ridersArray = [
 	{	name: "Chris Froome",
@@ -103,99 +62,9 @@ const peletonArray = [
 		descents: 3
 	}
 ]
-//Variables////////////////////////////////////////////////
-
-//Display Variables////////////////////
-//variables displayed on game screen///
-
-//Card Variables
-//Cards//////
-
-//playerOneCard
-// let pOneCard;
 
 
-// //playerTwoCard
-// let pTwoCard;
 
-// //Images//////
-
-// //class playerOneCardImage
-// let pOneCardImage;
-
-// //class playerTwoCardImage
-// let pTwoCardImage;
-
-// //class playerOneCardDescription
-// let pOneCardDescr
-
-// //class playerTwoCardDescription
-// let pTwoCardDescr
-
-// //Variables//////////////////////////////////////////////////
-
-
-// //Riders
-// //class playerOneDisplayRider
-// let pOneDispRider;
-
-// //class playerTwoDisplayRider
-// let pTwoDispRider;
-
-// //Variables/////////////////////////////////////////////
-
-
-// //Stamina Counters//////////
-
-// //class playerOneStamina
-// let pOneStaminaCounter;
-
-// //class playerTwoStamina
-// let pTwoStaminaCounter;
-
-// //Variables//////////////////////////////////////////////
-
-// //Pace Display
-// //class playerOneDisplaySpeed
-// let pOneDispSpeed;
-
-// //class playerTwoDisplaySpeed
-// let pTwoDispSpeed
-
-// //Variables/////////////////////////////////////////////
-
-// //Pace Buttons//////////////////
-// //html class playerOnePaceAttack
-// let pOneAttackButton;
-
-// //class playerTwoPaceAttack
-// let pTwoAttackButton;
-
-// //class playerOnepaceTempo
-// let pOneTempoButton;
-
-// //class playerTwoPaceTempo
-// let pTwoTempoButton;
-
-// //class playerOnePaceRecover
-// let pOneRecoverButton;
-
-// //class PlayerTwoPaceRecover
-// let pTwoRecoverButton;
-
-// //Variables////////////////////////////////////////////
-// //Display Distance////////////////
-
-// //class playerOneDisplayDistance
-// let playerOneDisplayDist
-
-// //class playerTwoDisplayDistance
-// let playerTwoDisplayDist
-// function startGame () {
-// 	const startInterval = setInterval(() => {
-
-// 	}, )
-// }
 	
 function riderSkills(flats, climbs, descents) {
 
@@ -254,6 +123,8 @@ const speedDescents = 85;
 	}
 
 
+
+
 riderSkills();
 // // }
 function speed(riderFlats, riderClimbs, riderDescents) {
@@ -275,13 +146,14 @@ function speed(riderFlats, riderClimbs, riderDescents) {
 }
 
 
-let playerStamina = 100;
+
+
 let pPace = speed;
 let paceButton;
 
 
 	// stamina === staminaDecrease; 
-	$(".attackButton").on('click', () => {
+	$(".playerOneAttackButton").on('click', () => {
 		pPace = speed * 1.15;
 		paceButton = "attack";
 		pacing(pPace);
@@ -289,47 +161,22 @@ let paceButton;
 
 
 	// stamina === staminaFreeze;
-	$(".tempoButton").on('click', () => {
+	$(".playerOneTempoButton").on('click', () => {
 		pPace = speed; 
 		paceButton = "tempo";
 		pacing(pPace);
 	});
 
 	// stamina === staminaIncrease;
-	$(".recoverButton").on('click', () => {
+	$(".playerOneRecoverButton").on('click', () => {
 		pPace = speed * .85;
 		paceButton = "recover";
 		pacing(pPace);
 	}); 
 	
 
-function pacing(pPace) {
-	pPace = Math.floor(pPace);
-	console.log(pPace);
-	$(".playerOneDisplayPace").html(`pace: ${pPace}km/h`);
-	pOneDistDisplay(pPace);
 
-}
-
-let totalDistance = 298;
-let distance = totalDistance
-let distanceInterval;
-
-function pOneDistDisplay(pPace) {
-
-	let inter = (pPace - 100) * -10;
-	clearInterval(distanceInterval);
-	distanceInterval = setInterval(()=> {
-	
-	console.log(`inter = ${inter}`)
-	
-		if (distance <= 0) {
-			clearInterval(distanceInterval);		} 
-		$(".playerOneDisplayDistance").html(`distance remaining: ${distance--}`);			
-	}, inter);
-}
-
-
+let playerStamina = 100;
 
 
 function riderDisplayStamina(pPace) {
@@ -361,6 +208,85 @@ function riderDisplayStamina(pPace) {
 }	
 
 riderDisplayStamina();
+
+
+
+function pacing(pPace) {
+	pPace = Math.floor(pPace);
+	console.log(pPace);
+	$(".playerOneDisplayPace").html(`pace: ${pPace}km/h`);
+	pOneDistDisplay(pPace);
+
+}
+
+
+let totalDistance = 298;
+let distance = totalDistance
+let distanceInterval;
+
+function pOneDistDisplay(pPace) {
+
+	let inter = (pPace - 100) * -10;
+	clearInterval(distanceInterval);
+	distanceInterval = setInterval(()=> {
+	
+	console.log(`inter = ${inter}`)
+	
+		if (distance <= 0) {
+			clearInterval(distanceInterval);		} 
+		$(".playerOneDisplayDistance").html(`distance remaining: ${distance--}`);			
+	}, inter);
+}
+
+
+
+
+function courseMilanSR(player) {
+		let totalDistance = 298;
+		let distTrav = totalDistance;
+		let location;
+
+		if (distTrav > 0 && distTrav < 100) {
+			 location = "flat";
+		} else if (distTrav >= 100 && distTrav < 145) {
+			location = "climb";
+		} else if (distTrav >= 145  && distTrav < 155) {
+			 location = "descent";
+		} else if (distTrav >= 155 && distTrav < 170) {
+			location = "flat";
+		} else if (distTrav >= 170 && distTrav < 180) {
+			location = "climb";
+		} else if (distTrav >= 180 && distTrav < 190) {
+			location = "descent";
+		} else if (distTrav >= 190 && distTrav < 250) {
+			location = "flat";
+		} else if (distTrav >= 250 && distTrav < 255) {
+			location = "climb";
+		} else if (distTrav >= 255 && distTrav < 260) {
+			location = "descent";
+		} else if (distTrav >= 260 && distTrav < 264) {
+			location = "flat";
+		} else if (distTrav >= 264 && distTrav < 269) {
+			location = "climb";
+		} else if (distTrav >= 269 && distTrav < 274) {
+			location = "descent";
+		} else if (distTrav >= 274 && distTrav < 286) {
+			location = "flat";
+		} else if (distTrav >= 286 && distTrav < 289) {
+			location = "climb";
+		} else if (distTrav >= 289 && distTrav < 295) {
+			location = "descent";
+		} else if (distTrav >= 295 && distTrav < 298) {
+			location = "flat";
+		} else if (distTrav === totalDistance) {
+			//winner is declared
+		}
+
+}		
+
+
+
+
 
 
 // function declareWinner(winner) {

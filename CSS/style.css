@@ -25,31 +25,64 @@ body {
 	"onespeed onebuttons onedistance"
 }
 
-.playerOnerRider {
+.playerOneDisplayRider {
 	grid-area: riderone;
+	border-style: dotted;
+	border-color: grey;
+	max-height: 50%;
+	margin: 5px;
 }
 
 
 .playerOneCard {
 	grid-area: onecard;
+	border-style: solid;
+	border-color: grey;
+	margin: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas:
+	"oneTL oneTR"
+	"oneBL oneBR"
+}
+
+.cardoneTL {
+	grid-area: oneTL;
+}
+
+.cardoneTR {
+	grid-area: oneTR;
 
 }
 
-.playerOneCardImage {
-	
+.cardoneBL {
+	grid-area: oneBL;
 }
 
-.playerOneCardDescription {
+.cardoneBR {
+	grid-area: oneBR;
 
 }
+
 
 .playerOneStamina {
 	grid-area: onestamina;
+	border-color: grey;
+	border-width: 5px;
+	border-style: dotted;
+	margin: 5px;
+	width: 80%;
 }
 
 
-.playerOneSpeedDisplay{
+.playerOneDisplayPace {
 	grid-area: onespeed;
+	border-color: grey;
+	border-width: 5px;
+	border-style: dotted;
+	margin: 5px;
+	max-height: 50px;
 }
 
 .playerOneButtons {
@@ -57,10 +90,12 @@ body {
 
 }
 
-.attackButton, .tempoButton, .recoverButton {
+.playerOneAttackButton, .playerOneTempoButton, .playerOneRecoverButton {
 	height: 50px;
 	border-color: grey;
 	border-width: 5px;
+	border-style: dotted;
+	margin: 5px;
 	
 }
 
@@ -68,6 +103,11 @@ body {
 
 .playerOneDisplayDistance {
 	grid-area: onedistance;
+	border-color: grey;
+	border-width: 5px;
+	border-style: dotted;
+	margin: 5px;
+	max-height: 50px;
 }
 
 .playerTwo {
@@ -82,49 +122,85 @@ body {
 	"twodistance twobuttons twospeed"
 }
 
-.playerTwoRider {
+.playerTwoDisplayRider {
 	grid-area: ridertwo;
+	border-style: dotted;
+	border-color: grey;
+	max-height: 50%;
+	margin: 5px;
 }
 
 .playerTwoCard {	
 	grid-area: twocard;
+	border-style: solid;
+	border-color: grey;
+	margin: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas:
+	"twoTL twoTR"
+	"twoBL twoBR"
 }
 
-.playerTwoCardImage {
+.cardTwoTL {
+	grid-area: twoTL;
+}
+
+.cardTwoTR {
+	grid-area: twoTR;
 
 }
 
-.playerTwoCardDescription {
+.cardTwoBL {
+	grid-area: twoBL;
+}
+
+.cardTwoBR {
+	grid-area: twoBR;
 
 }
 
 .playerTwoStamina {
 	grid-area: twostamina;
+	border-color: grey;
+	border-width: 5px;
+	border-style: dotted;
+	margin: 5px;
+	width: 80%;
 }
 
-.playerTwoSpeedDisplay {
+.playerTwoDisplayPace {
 	grid-area: twospeed;
+	border-color: grey;
+	border-width: 5px;
+	border-style: dotted;
+	margin: 5px;
+	max-height: 50px;
 }
 
 .playerTwoButtons {
 
 }
 
-.playerTwoPaceAttack {
-	
-	
+.playerTwoAttackButton, .playerTwoTempoButton, .playerTwoRecoverButton {
+	height: 50px;
+	border-color: grey;
+	border-width: 5px;
+	border-style: dotted;
+	margin: 5px;
+	max-height: 50px;
 }
 
-.playerTwoPaceTempo { 
 
-}
-
-.playerTwoPaceRecover{
-
-}
 
 .playerTwoDisplayDistance {
 	grid-area: twodistance;
+	border-color: grey;
+	border-width: 5px;
+	border-style: dotted;
+	margin: 5px;
+	max-height: 50px;
 }
 
 
