@@ -277,8 +277,8 @@ function startGame(riderOnePlayerChoice, riderTwoPlayerChoice) {
 	let playerTwo = new Player(riderTwoPlayerChoice.name, riderTwoPlayerChoice.flats,
 		riderTwoPlayerChoice.climbs, riderOnePlayerChoice.descents, 'playerTwo');
 
-	playerOne.riderSkills();
-	playerTwo.riderSkills();
+	//playerOne.riderSkills();
+	//playerTwo.riderSkills();
 
 	console.log(`p1 ${playerOne.name}, p2 ${playerTwo.name}`)
 	}
@@ -296,9 +296,9 @@ class Player {
 		this.riderClimbs = riderClimbs;
 		this.riderDescents = riderDescents;
 		this.speed = speed;
-		this.totalDistance = totalDistance;
-		this.distTrav = distTrav;
-		this.distance = distance;
+		this.totalDistance = 298;
+		//this.distTrav = distTrav;
+		this.distance = 298;
 		this.location = location;
 		this.htmlPrefix = htmlPrefix;
 		this.distanceInterval;
@@ -306,29 +306,36 @@ class Player {
 
 		this.courseMilanSR();
 		this.riderDisplayStamina();
+		this.pacing("none");
+
+		this.riderSkills();
+
+
+		// this.masterInterval = setInterval(()=>
+		// {
+		// 	this.courseMilanSR();
+		// 	this.regSpeed();
+		// }, 100);
 	}
 
 	createEventListeners() {
 		//buttons
 	$(`.${this.htmlPrefix}AttackButton`).on('click', () => {
-		this.pPace = this.speed * 1.5;
-		this.paceButton = "attack";
-		this.pacing();
+		
+		this.pacing("attack");
 	});
 
 
 	// stamina === staminaFreeze;
 	$(`.${this.htmlPrefix}TempoButton`).on('click', () => {
-		this.pPace = this.speed; 
-		this.paceButton = "tempo";
-		this.pacing();
+		
+		this.pacing("tempo");
 	});
 
 	// stamina === staminaIncrease;
 	$(`.${this.htmlPrefix}RecoverButton`).on('click', () => {
-		this.pPace = this.speed * .5;
-		this.paceButton = "recover";
-		this.pacing();
+		
+		this.pacing("recover");
 	}); 
 
 	}
@@ -395,7 +402,9 @@ class Player {
 	//defining speeds on different terrain
 	regSpeed() {
 
-		this.location = "descent";
+		//console.log("regSpeed called");
+
+		let oldSpeed = this.speed;
 
 		if (this.location === "flat") {
 			this.speed = this.riderFlats;
@@ -406,6 +415,13 @@ class Player {
 		} else if (this.location === "descent") {
 			this.speed = this.riderDescents;
 			console.log(`${this.htmlPrefix}: speed ${this.speed}`)
+		}
+
+		if (oldSpeed != this.speed)
+		{
+			//if the speed changed, re-run the distance interval
+			console.log("SPEED CHANGED");
+			this.pacing(this.paceButton);
 		}
 	// this.pacing();
 	}
@@ -443,7 +459,32 @@ class Player {
 	}	
 
 
-	pacing() {
+	pacing(whichPace) {
+
+		switch (whichPace)
+		{
+			case "attack":
+				this.pPace = this.speed * 1.5;
+				this.paceButton = "attack";
+				break;
+			case "tempo":
+				this.pPace = this.speed;
+				this.paceButton = "tempo";
+				break;
+			case "recover":
+				this.pPace = this.speed * 0.5;
+				this.paceButton = "recover";
+				break;
+			case "none":
+				this.pPace = 0;
+				this.paceButton = "none";
+			default:
+				console.log("ERROR: unknown pacing requested");
+		}
+
+		
+
+
 		console.log("PACING");
 		console.log("this.speed: " + this.speed);
 		console.log("this.pPace before: " + this.pPace);
@@ -458,63 +499,82 @@ class Player {
 
 	distanceDisplay() {
 
-		this.inter = (1/this.pPace)*10000;
-		clearInterval(this.distanceInterval);
-		if (!this.distance) {this.distance = this.totalDistance;}
-		this.distanceInterval = setInterval(()=> {
-			//console.log(`inter = ${this.inter}`)
-			if (this.distance <= 0) {
-				clearInterval(this.distanceInterval);
-				this.distance = 0;
-			}
-			this.distance--;
-			console.log("distance changed");
-			$(`.${this.htmlPrefix}DisplayDistance`).html(`distance remaining: ${this.distance}`);
-		}, this.inter);
+		if (this.pPace > 0)
+		{
 
-	
+			this.inter = (1/this.pPace)*10000;
+			clearInterval(this.distanceInterval);
+			if (!this.distance) {this.distance = this.totalDistance;}
+			this.distanceInterval = setInterval(()=> {
+				//console.log(`inter = ${this.inter}`)
+				if (this.distance <= 0) {
+					clearInterval(this.distanceInterval);
+					this.distance = 0;
+				}
+
+				this.distance--;
+				//console.log(this.distance);
+				//console.log("distance changed");
+				$(`.${this.htmlPrefix}DisplayDistance`).html(`distance remaining: ${this.distance}`);
+
+				this.courseMilanSR();
+				this.regSpeed();
+			}, this.inter);
+		}
+
 	}
 
 	courseMilanSR() {
 		this.totalDistance = 298;
 		let distTrav = this.totalDistance - this.distance;
-		let location = "flat";
+		//this.location = "flat";
 
-		if (this.distTrav > 0 && this.distTrav < 100) {
-			 location = "flat";
-		} else if (this.distTrav >= 100 && this.distTrav < 145) {
-			location = "climb";
-		} else if (this.distTrav >= 145  && this.distTrav < 155) {
-			 location = "descent";
-		} else if (this.distTrav >= 155 && this.distTrav < 170) {
-			location = "flat";
-		} else if (this.distTrav >= 170 && this.distTrav < 180) {
-			location = "climb";
-		} else if (this.distTrav >= 180 && this.distTrav < 190) {
-			location = "descent";
-		} else if (this.distTrav >= 190 && this.distTrav < 250) {
-			location = "flat";
-		} else if (this.distTrav >= 250 && this.distTrav < 255) {
-			location = "climb";
-		} else if (this.distTrav >= 255 && this.distTrav < 260) {
-			location = "descent";
-		} else if (this.distTrav >= 260 && this.distTrav < 264) {
-			location = "flat";
-		} else if (this.distTrav >= 264 && this.distTrav < 269) {
-			location = "climb";
-		} else if (this.distTrav >= 269 && this.distTrav < 274) {
-			location = "descent";
-		} else if (this.distTrav >= 274 && this.distTrav < 286) {
-			location = "flat";
-		} else if (this.distTrav >= 286 && this.distTrav < 289) {
-			location = "climb";
-		} else if (this.distTrav >= 289 && this.distTrav < 295) {
-			location = "descent";
-		} else if (this.distTrav >= 295 && this.distTrav < 298) {
-			location = "flat";
-		} else if (this.distTrav === this.totalDistance) {
+		console.log("distTrav: " + distTrav);
+		//console.log(this.totalDistance);
+		//console.log(this.distance);
+
+		if (distTrav >= 0 && distTrav < 100) {
+			 this.location = "flat";
+		} else if (distTrav >= 100 && distTrav < 145) {
+			this.location = "climb";
+		} else if (distTrav >= 145  && distTrav < 155) {
+			 this.location = "descent";
+		} else if (distTrav >= 155 && distTrav < 170) {
+			this.location = "flat";
+		} else if (distTrav >= 170 && distTrav < 180) {
+			this.location = "climb";
+		} else if (distTrav >= 180 && distTrav < 190) {
+			this.location = "descent";
+		} else if (distTrav >= 190 && distTrav < 250) {
+			this.location = "flat";
+		} else if (distTrav >= 250 && distTrav < 255) {
+			this.location = "climb";
+		} else if (distTrav >= 255 && distTrav < 260) {
+			this.location = "descent";
+		} else if (distTrav >= 260 && distTrav < 264) {
+			this.location = "flat";
+		} else if (distTrav >= 264 && distTrav < 269) {
+			this.location = "climb";
+		} else if (distTrav >= 269 && distTrav < 274) {
+			this.location = "descent";
+		} else if (distTrav >= 274 && distTrav < 286) {
+			this.location = "flat";
+		} else if (distTrav >= 286 && distTrav < 289) {
+			this.location = "climb";
+		} else if (distTrav >= 289 && distTrav < 295) {
+			this.location = "descent";
+		} else if (distTrav >= 295 && distTrav < 298) {
+			this.location = "flat";
+		} else if (distTrav === this.totalDistance) {
 			//winner is declared
 		}
+
+		//set an html element to contain this.location
+		//use an if block to set the picture
+
+
+
+		console.log("location: " + this.location);
 
 	}		
 }
