@@ -28,6 +28,19 @@ const ridersArray = [
 
 
 //Global variables:
+let name;
+let flats;
+let climbs;
+let descents;
+let riderFlats;
+let riderClimbs;
+let riderDescents;
+let speed;
+let playerStamina = 100;
+let distance;
+let totalDistance;
+let distTrav = totalDistance - distance;
+
 let pPace;
 let paceButton;
 //setting player choices as false
@@ -253,18 +266,19 @@ function chooseRider() {
 
 chooseRider();
 
-
-
 //start game function
 function startGame(riderOnePlayerChoice, riderTwoPlayerChoice) {
 	if (riderOnePlayerChoice !== false && riderTwoPlayerChoice !== false) {
 		console.log(`begin!`);
 
 	let playerOne = new Player(riderOnePlayerChoice.name, riderOnePlayerChoice.flats,
-		riderOnePlayerChoice.climbs);
+		riderOnePlayerChoice.climbs, riderOnePlayerChoice.descents, 'playerOne');
 
 	let playerTwo = new Player(riderTwoPlayerChoice.name, riderTwoPlayerChoice.flats,
-		riderTwoPlayerChoice.climbs)
+		riderTwoPlayerChoice.climbs, riderOnePlayerChoice.descents, 'playerTwo');
+
+	playerOne.riderSkills();
+	playerTwo.riderSkills();
 
 	console.log(`p1 ${playerOne.name}, p2 ${playerTwo.name}`)
 	}
@@ -281,243 +295,259 @@ class Player {
 		this.riderFlats = riderFlats;
 		this.riderClimbs = riderClimbs;
 		this.riderDescents = riderDescents;
-		// this.speed = speed;
-		// this.Ppace = Ppace;
-		// this.totalDistance = totalDistance;
-		// this.distTrav = distTrav;
-		// this.distance = distance;
-		// this.location = location;
-		// this.htmlPrefix = htmlPrefix;
-	}
-}
+		this.speed = speed;
+		this.totalDistance = totalDistance;
+		this.distTrav = distTrav;
+		this.distance = distance;
+		this.location = location;
+		this.htmlPrefix = htmlPrefix;
+		this.distanceInterval;
 
 
-function riderSkills(playerOne, playerTwo) {
-
-//riderOterrain needs to become rider.terrain based on rider objects/player classes. 
-	flats = 4;
-	climbs = 5;
-	descents = 2;
-
-const speedFlats = 45;
-const speedClimbs = 25;
-const speedDescents = 85;
-
-	//calculating rider speed on flats
-		if (flats === 5) {
-			riderFlats = speedFlats * 1.2
-		} 	else if (flats === 4) {
-				riderFlats = speedFlats * 1.1;
-		}	else if (flats === 3) {
-				riderFlats = speedFlats * 1;
-		}	else if (flats === 2) {
-				riderFlats = speedFlats * .9;
-		}	else if (flats === 1) {
-				riderFlats = speedFlats * .8 ;
-		}
-		console.log(`flats: ${riderFlats}`);
-   
-
-		//calculating rider speed on climbs
-		if (climbs === 5) {
-			riderClimbs = speedClimbs * 1.2
-		} 	else if (climbs === 4) {
-				riderClimbs = speedClimbs * 1.1;
-		}	else if (climbs === 3) {
-				riderClimbs = speedClimbs * 1;
-		}	else if (climbs === 2) {
-				riderClimbs = speedClimbs * .9;
-		}	else if (climbs === 1) {
-				riderClimbs = speedClimbs * .8;
-		}
-		console.log(`climbs: ${riderClimbs}`);
-	
-		//calculating rider speed on descents
-		if (descents === 5) {
-			riderDescents = speedDescents * 1.2
-		} 	else if (descents === 4) {
-				riderDescents = speedDescents * 1.1;
-		}	else if (descents === 3) {
-				riderDescents = speedDescents * 1;
-		}	else if (descents === 2) {
-				riderDescents = speedDescents * .9;
-		}	else if (descents === 1) {
-				riderDescents = speedDescents * .8;
-		}
-		console.log(`descents: ${riderDescents}`);
-		speed(riderFlats, riderClimbs, riderDescents);
+		this.courseMilanSR();
+		this.riderDisplayStamina();
 	}
 
-
-
-
-riderSkills();
-// // }
-function speed(riderFlats, riderClimbs, riderDescents) {
-	//defining speeds on different terrain
-	
-
-	let location = "flats";
-
-	if (location === "flats") {
-		speed = riderFlats;
-		console.log(`speed ${speed}`)
-	} else if (location === "climbs") {
-		speed = riderClimbs;
-		console.log(`speed ${speed}`)
-	} else if (location === "descents") {
-		speed = riderDescents;
-		console.log(`speed ${speed}`)
-	}
-}
-
-
-
-
-
-
-
-	// stamina === staminaDecrease; 
-	$(".playerOneAttackButton").on('click', () => {
-		pPace = speed * 1.15;
-		paceButton = "attack";
-		pacing(pPace);
+	createEventListeners() {
+		//buttons
+	$(`.${this.htmlPrefix}AttackButton`).on('click', () => {
+		this.pPace = this.speed * 1.5;
+		this.paceButton = "attack";
+		this.pacing();
 	});
 
 
 	// stamina === staminaFreeze;
-	$(".playerOneTempoButton").on('click', () => {
-		pPace = speed; 
-		paceButton = "tempo";
-		pacing(pPace);
+	$(`.${this.htmlPrefix}TempoButton`).on('click', () => {
+		this.pPace = this.speed; 
+		this.paceButton = "tempo";
+		this.pacing();
 	});
 
 	// stamina === staminaIncrease;
-	$(".playerOneRecoverButton").on('click', () => {
-		pPace = speed * .85;
-		paceButton = "recover";
-		pacing(pPace);
+	$(`.${this.htmlPrefix}RecoverButton`).on('click', () => {
+		this.pPace = this.speed * .5;
+		this.paceButton = "recover";
+		this.pacing();
 	}); 
-	
+
+	}
 
 
-let playerStamina = 100;
+	//defining rider skills (input - flats, climbs, descents. outputs riderFlats,Climbs,Descents)
+	riderSkills() {
+		this.createEventListeners();
 
+		flats = this.flats;
+		climbs = this.climbs;
+		descents = this.descents;
 
-function riderDisplayStamina(pPace) {
-	
-	$(".playerOneStamina").html(`Stamina: ${playerStamina}%`);
+		//setting base speed levels
+		const speedFlats = 45;
+		const speedClimbs = 25;
+		const speedDescents = 85;
 
-	let staminaCounter = setInterval(()=> {
+		//calculating rider speed on flats
+			if (flats === 5) {
+				this.riderFlats = speedFlats * 1.2
+			} 	else if (flats === 4) {
+					this.riderFlats = speedFlats * 1.1;
+			}	else if (flats === 3) {
+					this.riderFlats = speedFlats * 1;
+			}	else if (flats === 2) {
+					this.riderFlats = speedFlats * .9;
+			}	else if (flats === 1) {
+					this.riderFlats = speedFlats * .8 ;
+			}
+			console.log(`${this.htmlPrefix}: flats: ${this.riderFlats}`);
+	   
 
-		if (paceButton === "attack" && playerStamina >= 0) {
-			$(".playerOneStamina").html(`Stamina: ${playerStamina--}%`);
+			//calculating rider speed on climbs
+			if (climbs === 5) {
+				this.riderClimbs = speedClimbs * 1.2
+			} 	else if (climbs === 4) {
+					this.riderClimbs = speedClimbs * 1.1;
+			}	else if (climbs === 3) {
+					this.riderClimbs = speedClimbs * 1;
+			}	else if (climbs === 2) {
+					this.riderClimbs = speedClimbs * .9;
+			}	else if (climbs === 1) {
+					this.riderClimbs = speedClimbs * .8;
+			}
+			console.log(`${this.htmlPrefix}: climbs: ${this.riderClimbs}`);
+		
+			//calculating rider speed on descents
+			if (descents === 5) {
+				this.riderDescents = speedDescents * 1.2
+			} 	else if (descents === 4) {
+					this.riderDescents = speedDescents * 1.1;
+			}	else if (descents === 3) {
+					this.riderDescents = speedDescents * 1;
+			}	else if (descents === 2) {
+					this.riderDescents = speedDescents * .9;
+			}	else if (descents === 1) {
+					this.riderDescents = speedDescents * .8;
+			}
+			console.log(`${this.htmlPrefix}: descents: ${this.riderDescents}`);
+			this.regSpeed();
+	}
 
-		} else if (paceButton === "tempo") {
-			$(".playerOneStamina").html(`Stamina: ${playerStamina}%`); 
-				
-		} else if (paceButton === "recover" && playerStamina <= 100) {
-				$(".playerOneStamina").html(`Stamina: ${playerStamina++}%`);
-				
+	//defining speeds on different terrain
+	regSpeed() {
+
+		this.location = "descent";
+
+		if (this.location === "flat") {
+			this.speed = this.riderFlats;
+			console.log(`${this.htmlPrefix}: speed ${this.speed}`)
+		} else if (this.location === "climb") {
+			this.speed = this.riderClimbs;
+			console.log(`${this.htmlPrefix}: speed ${this.speed}`)
+		} else if (this.location === "descent") {
+			this.speed = this.riderDescents;
+			console.log(`${this.htmlPrefix}: speed ${this.speed}`)
 		}
-			
-		if (playerStamina === 0){
-			$(".playerOneStamina").html(`Stamina: ${playerStamina}%`);
-			pPace = speed; 
-			paceButton = "tempo";
-			pacing(pPace);
-			playerStamina++;
-
-		}
-	}, 50)
-}	
-
-riderDisplayStamina();
+	// this.pacing();
+	}
 
 
-
-function pacing(pPace) {
-	pPace = Math.floor(pPace);
-	console.log(pPace);
-	$(".playerOneDisplayPace").html(`pace: ${pPace}km/h`);
-	distanceDisplay(pPace);
-
-}
-
-
-let totalDistance = 298;
-let distance = totalDistance
-let distanceInterval;
-
-function distanceDisplay(pPace) {
-
-	let inter = (pPace - 100) * -10;
-	clearInterval(distanceInterval);
-	distanceInterval = setInterval(()=> {
+	riderDisplayStamina() {
 	
-	console.log(`inter = ${inter}`)
+		this.playerStamina = 100;
+
+		$(`.${this.htmlPrefix}Stamina`).html(`Stamina: ${this.playerStamina}%`);
+
+		this.staminaCounter = setInterval(()=> {
+
+			if (this.paceButton === "attack" && this.playerStamina >= 0) {
+				$(`.${this.htmlPrefix}Stamina`).html(`Stamina: ${this.playerStamina--}%`);
+
+			} else if (this.paceButton === "tempo") {
+				$(`.${this.htmlPrefix}Stamina`).html(`Stamina: ${this.playerStamina}%`); 
+					
+			} else if (this.paceButton === "recover" && this.playerStamina <= 100) {
+					$(`.${this.htmlPrefix}Stamina`).html(`Stamina: ${this.playerStamina++}%`);
+					
+			}
+				
+			if (this.playerStamina === 0){
+				$(`.${this.htmlPrefix}Stamina`).html(`Stamina: ${this.playerStamina}%`);
+				this.pPace = this.speed * 0.5; 
+				this.paceButton = "recover";
+				this.playerStamina++;
+				this.pacing();
+
+			}
+		}, 50)
+		// this.pacing();
+	}	
+
+
+	pacing() {
+		console.log("PACING");
+		console.log("this.speed: " + this.speed);
+		console.log("this.pPace before: " + this.pPace);
+		this.pPace = Math.floor(this.pPace);
+		console.log("this.pPace after: " + this.pPace);
+		$(`.${this.htmlPrefix}DisplayPace`).html(`pace: ${this.pPace}km/h`);
+		//this.pPace = this.speed;
+		this.stamina = this.staminaDecrease; 
+		this.distanceDisplay();
+	}
+
+
+	distanceDisplay() {
+
+		this.inter = (1/this.pPace)*10000;
+		clearInterval(this.distanceInterval);
+		if (!this.distance) {this.distance = this.totalDistance;}
+		this.distanceInterval = setInterval(()=> {
+			//console.log(`inter = ${this.inter}`)
+			if (this.distance <= 0) {
+				clearInterval(this.distanceInterval);
+				this.distance = 0;
+			}
+			this.distance--;
+			console.log("distance changed");
+			$(`.${this.htmlPrefix}DisplayDistance`).html(`distance remaining: ${this.distance}`);
+		}, this.inter);
+
 	
-		if (distance <= 0) {
-			clearInterval(distanceInterval);		} 
-		$(".playerOneDisplayDistance").html(`distance remaining: ${distance--}`);			
-	}, inter);
-}
+	}
 
+	courseMilanSR() {
+		this.totalDistance = 298;
+		let distTrav = this.totalDistance - this.distance;
+		let location = "flat";
 
-
-
-function courseMilanSR(player) {
-		let totalDistance = 298;
-		let distTrav = totalDistance;
-		let location;
-
-		if (distTrav > 0 && distTrav < 100) {
+		if (this.distTrav > 0 && this.distTrav < 100) {
 			 location = "flat";
-		} else if (distTrav >= 100 && distTrav < 145) {
+		} else if (this.distTrav >= 100 && this.distTrav < 145) {
 			location = "climb";
-		} else if (distTrav >= 145  && distTrav < 155) {
+		} else if (this.distTrav >= 145  && this.distTrav < 155) {
 			 location = "descent";
-		} else if (distTrav >= 155 && distTrav < 170) {
+		} else if (this.distTrav >= 155 && this.distTrav < 170) {
 			location = "flat";
-		} else if (distTrav >= 170 && distTrav < 180) {
+		} else if (this.distTrav >= 170 && this.distTrav < 180) {
 			location = "climb";
-		} else if (distTrav >= 180 && distTrav < 190) {
+		} else if (this.distTrav >= 180 && this.distTrav < 190) {
 			location = "descent";
-		} else if (distTrav >= 190 && distTrav < 250) {
+		} else if (this.distTrav >= 190 && this.distTrav < 250) {
 			location = "flat";
-		} else if (distTrav >= 250 && distTrav < 255) {
+		} else if (this.distTrav >= 250 && this.distTrav < 255) {
 			location = "climb";
-		} else if (distTrav >= 255 && distTrav < 260) {
+		} else if (this.distTrav >= 255 && this.distTrav < 260) {
 			location = "descent";
-		} else if (distTrav >= 260 && distTrav < 264) {
+		} else if (this.distTrav >= 260 && this.distTrav < 264) {
 			location = "flat";
-		} else if (distTrav >= 264 && distTrav < 269) {
+		} else if (this.distTrav >= 264 && this.distTrav < 269) {
 			location = "climb";
-		} else if (distTrav >= 269 && distTrav < 274) {
+		} else if (this.distTrav >= 269 && this.distTrav < 274) {
 			location = "descent";
-		} else if (distTrav >= 274 && distTrav < 286) {
+		} else if (this.distTrav >= 274 && this.distTrav < 286) {
 			location = "flat";
-		} else if (distTrav >= 286 && distTrav < 289) {
+		} else if (this.distTrav >= 286 && this.distTrav < 289) {
 			location = "climb";
-		} else if (distTrav >= 289 && distTrav < 295) {
+		} else if (this.distTrav >= 289 && this.distTrav < 295) {
 			location = "descent";
-		} else if (distTrav >= 295 && distTrav < 298) {
+		} else if (this.distTrav >= 295 && this.distTrav < 298) {
 			location = "flat";
-		} else if (distTrav === totalDistance) {
+		} else if (this.distTrav === this.totalDistance) {
 			//winner is declared
 		}
 
-}		
+	}		
+}
 
 
 
 
 
 
-// function declareWinner(winner) {
-// 	alert(`${winner} Has won! Chapeau!`);
-// 	location.reload();
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
