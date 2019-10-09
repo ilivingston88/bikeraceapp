@@ -17,23 +17,10 @@
 // let playerOne = new Player("One");
 // let playerTwo = new Player("Two");
 
-// // function playGame() {
-// // 	player1.location = ''
-// // 	payer1.riderSkills()
-// // }
-
-// function chooseRider() {
-
-
-	//playerOne & playerTwo have Card screens populated with info from array;
-	//playerOnene selects a rider using keys 1,2,3,4.
-		//if playerOne selects rider, that rider becomes unavailable to playerTwo.
-	//playerTwo selects from remaining riders.
-
-
+// function playGame() {
+// 	player1.location = ''
+// 	payer1.riderSkills()
 // }
-
-
 
 const ridersArray = [
 	{	name: "Chris Froome",
@@ -53,16 +40,191 @@ const ridersArray = [
 		climbs: 4,
 		descents: 5
 	},
-]
 
-const peletonArray = [
-	{	name: "peleton",
-		flats: 3,
+	{	name: "Peter Sagan",
+		flats: 5,
 		climbs: 3,
-		descents: 3
+		descents: 5
 	}
 ]
 
+
+function chooseRider() {
+
+	$(".cardOneTL").html(`
+		Please select your rider </br>
+		</br>
+		name: ${ridersArray[0].name}</br>
+		flats: ${ridersArray[0].flats}</br>
+		climbs ${ridersArray[0].climbs}</br>
+		descents ${ridersArray[0].descents} `);
+
+	$(".cardOneTR").html(`
+		Please select your rider </br>
+		</br>
+		name: ${ridersArray[1].name}</br>
+		flats: ${ridersArray[1].flats}</br>
+		climbs ${ridersArray[1].climbs}</br>
+		descents ${ridersArray[1].descents} `);
+
+	$(".cardOneBL").html(`
+		Please select your rider </br>
+		</br>
+		name: ${ridersArray[2].name}</br>
+		flats: ${ridersArray[2].flats}</br>
+		climbs ${ridersArray[2].climbs}</br>
+		descents ${ridersArray[2].descents} `);
+
+	$(".cardOneBR").html(`
+		Please select your rider </br>
+		</br>
+		name: ${ridersArray[3].name}</br>
+		flats: ${ridersArray[3].flats}</br>
+		climbs ${ridersArray[3].climbs}</br>
+		descents ${ridersArray[3].descents} `);
+
+	$(".cardTwoTL").html(`
+		Please select your rider </br>
+		</br>
+		name: ${ridersArray[0].name}</br>
+		flats: ${ridersArray[0].flats}</br>
+		climbs ${ridersArray[0].climbs}</br>
+		descents ${ridersArray[0].descents} `);
+
+	$(".cardTwoTR").html(`
+		Please select your rider </br>
+		</br>
+		name: ${ridersArray[1].name}</br>
+		flats: ${ridersArray[1].flats}</br>
+		climbs ${ridersArray[1].climbs}</br>
+		descents ${ridersArray[1].descents} `);
+
+	$(".cardTwoBL").html(`
+		Please select your rider </br>
+		</br>
+		name: ${ridersArray[2].name}</br>
+		flats: ${ridersArray[2].flats}</br>
+		climbs ${ridersArray[2].climbs}</br>
+		descents ${ridersArray[2].descents} `);
+
+	$(".cardTwoBR").html(`
+		Please select your rider </br>
+		</br>
+		name: ${ridersArray[3].name}</br>
+		flats: ${ridersArray[3].flats}</br>
+		climbs ${ridersArray[3].climbs}</br>
+		descents ${ridersArray[3].descents} `);
+
+	
+	 $(".cardOneTL").click(function()
+	 {
+
+	 	let riderOnePlayerChoice = ridersArray[0].name;
+
+		$(".cardOneTL").html(``);
+		$(".cardOneTR").html(``);
+	   	$(".cardOneBL").html(``);
+	   	$(".cardOneBR").html(``);
+	    $(".cardTwoTL").html(``);
+	    $(".playerOneDisplayRider").html(`You are racing as ${riderOnePlayerChoice}`);
+	    $(".cardTwoTL").off("click");
+
+	 });
+
+	 $(".cardOneTR").click(function()
+	 {
+	 	let riderOnePlayerChoice = ridersArray[1].name;
+
+		$(".cardOneTR").html(``);
+		$(".cardOneTL").html(``);
+	   	$(".cardOneBL").html(``);
+	   	$(".cardOneBR").html(``);
+	    $(".cardTwoTR").html(``);
+	    $(".playerOneDisplayRider").html(`You are racing as ${riderOnePlayerChoice}`);
+	    $(".cardTwoTR").off("click");
+	});
+
+	$(".cardOneBL").click(function()
+	{
+		riderOnePlayerChoice = ridersArray[2].name;
+
+		$(".cardOneBL").html(``);
+		$(".cardOneTL").html(``);
+	   	$(".cardOneTR").html(``);
+	   	$(".cardOneBR").html(``);
+	    $(".cardTwoBL").html(``);
+	    $(".playerOneDisplayRider").html(`You are racing as ${riderOnePlayerChoice}`);
+	    $(".cardTwoBL").off("click");
+	});
+
+	$(".cardOneBR").click(function()
+	{
+		riderOnePlayerChoice = ridersArray[3].name;
+
+		$(".cardOneBR").html(``);
+		$(".cardOneTL").html(``);
+	   	$(".cardOneTR").html(``);
+	   	$(".cardOneBL").html(``);
+	    $(".cardTwoBR").html(``);
+	    $(".playerOneDisplayRider").html(`You are racing as ${riderOnePlayerChoice}`);
+	    $(".cardTwoBR").off("click");
+	});
+
+	$(".cardTwoTL").click(function()
+	{
+		let riderTwoPlayerChoice = ridersArray[0].name;
+
+		$(".cardTwoTL").html(``);
+		$(".cardTwoTR").html(``);
+	   	$(".cardTwoBL").html(``);
+	   	$(".cardTwoBR").html(``);
+	    $(".cardOneTL").html(``);
+	    $(".playerTwoDisplayRider").html(`You are racing as ${riderTwoPlayerChoice}`);
+	    $(".cardOneTL").off("click");
+	});
+
+	$(".cardTwoTR").click(function()
+	{
+		riderTwoPlayerChoice = ridersArray[1].name;
+
+		$(".cardTwoTR").html(``);
+		$(".cardTwoTL").html(``);
+	   	$(".cardTwoBL").html(``);
+	   	$(".cardTwoBR").html(``);
+	    $(".cardOneTR").html(``);
+	    $(".playerTwoDisplayRider").html(`You are racing as ${riderTwoPlayerChoice}`);
+	    $(".cardOneTR").off("click");
+	});
+
+	$(".cardTwoBL").click(function()
+	{
+		riderTwoPlayerChoice = ridersArray[2].name;
+
+		$(".cardTwoBL").html(``);
+		$(".cardTwoTL").html(``);
+	   	$(".cardTwoTR").html(``);
+	   	$(".cardTwoBR").html(``);
+	    $(".cardOneBL").html(``);
+	    $(".playerTwoDisplayRider").html(`You are racing as ${riderTwoPlayerChoice}`);
+	    $(".cardOneBL").off("click");
+	});
+
+	$(".cardTwoBR").click(function()
+	{
+		riderTwoPlayerChoice = ridersArray[3].name;
+
+		$(".cardTwoBR").html(``);
+		$(".cardTwoTL").html(``);
+	   	$(".cardTwoTR").html(``);
+	   	$(".cardTwoBL").html(``);
+	    $(".cardTwoBR").html(``);
+	    $(".playerTwoDisplayRider").html(`You are racing as ${riderTwoPlayerChoice}`);
+	    $(".cardOneBR").off("click");
+	});
+
+}
+
+chooseRider();
 
 
 	

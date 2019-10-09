@@ -47,20 +47,21 @@ body {
 	"oneBL oneBR"
 }
 
-.cardoneTL {
+.cardOneTL {
 	grid-area: oneTL;
+
 }
 
-.cardoneTR {
+.cardOneTR {
 	grid-area: oneTR;
 
 }
 
-.cardoneBL {
+.cardOneBL {
 	grid-area: oneBL;
 }
 
-.cardoneBR {
+.cardOneBR {
 	grid-area: oneBR;
 
 }
