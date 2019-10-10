@@ -1,3 +1,8 @@
+// <img style="height: 50px;" id="Froome_img" src="https://cdn.pixabay.com/photo/2019/09/26/13/35/chris-froome-4505981_960_720.jpg">
+// 		<img style="height: 50px;" id="Dumoulin_img" src="https://c1.staticflickr.com/9/8653/16787592252_f4172c5ccb_b.jpg">
+// 		<img style="height: 50px;" id="Alaphilippe_img" src="https://upload.wikimedia.org/wikipedia/commons/f/f6/2018_Tour_of_Britain_stage_3_-_stage_winner_Julian_Alaphilippe_%28cropped%29.JPG">
+// 		<img style="height: 50px;" id="Sagan_img" src="https://upload.wikimedia.org/wikipedia/commons/0/05/Peter_Sagan_Tour_de_France_2017.jpg">
+
 
 //Array of available characters to choose from.
 const ridersArray = [
@@ -7,7 +12,7 @@ const ridersArray = [
 		descents: 4
 	},
 
-	{	name: "Tom Domoulin",
+	{	name: "Tom Dumoulin",
 		flats: 5,
 		climbs: 4,
 		descents: 3
@@ -131,7 +136,8 @@ function chooseRider() {
 	    $(".cardOneTR").off("click");
 	    $(".cardOneBL").off("click");
 	    $(".cardOneBR").off("click");
-	    $(".playerOneCard").html(`P1 is ready. Riding as ${riderOnePlayerChoice.name}`)
+	    $(".cardOneTL").html(`P1 is ready. Riding as ${riderOnePlayerChoice.name}`)
+	    $(".playerOneDisplayRider").append($('<img id="Froome_img" src="https://cdn.pixabay.com/photo/2019/09/26/13/35/chris-froome-4505981_960_720.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	 });
 
@@ -151,6 +157,7 @@ function chooseRider() {
 	    $(".cardOneBL").off("click");
 	    $(".cardOneBR").off("click");
 	    $(".playerOneCard").html(`P1 is ready. Riding as ${riderOnePlayerChoice.name}`)
+	    $(".playerOneDisplayRider").append($('<img " id="Dumoulin_img" src="https://www.pezcyclingnews.com/wp-content/uploads/2018/07/tdf18st20tt-dumoulin-ride-920.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	});
 
@@ -169,6 +176,7 @@ function chooseRider() {
 	    $(".cardOneBL").off("click");
 	    $(".cardOneBR").off("click");
 	    $(".playerOneCard").html(`P1 is ready. Riding as ${riderOnePlayerChoice.name}`)
+	    $(".playerOneDisplayRider").append($('<img id="Alaphilippe_img" src="https://pbs.twimg.com/profile_images/1080158395628425217/coQJnoK__400x400.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	});
 
@@ -187,6 +195,7 @@ function chooseRider() {
 	    $(".cardOneBL").off("click");
 	    $(".cardOneBR").off("click");
 	    $(".playerOneCard").html(`P1 is ready. Riding as ${riderOnePlayerChoice.name}`)
+	    $(".playerOneDisplayRider").append($('<img id="Sagan_img" src="https://i.pinimg.com/originals/84/40/b8/8440b83694d9d3d69106db4395a738cd.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice); 
 	});
 
@@ -205,6 +214,7 @@ function chooseRider() {
 	    $(".cardTwoBL").off("click");
 	    $(".cardTwoBR").off("click");
 	    $(".playerTwoCard").html(`P2 is ready. Riding as ${riderTwoPlayerChoice.name}`)
+	    $(".playerTwoDisplayRider").append($('<img id="Froome_img" src="https://cdn.pixabay.com/photo/2019/09/26/13/35/chris-froome-4505981_960_720.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);  
 	});
 
@@ -223,6 +233,7 @@ function chooseRider() {
 	    $(".cardTwoBL").off("click");
 	    $(".cardTwoBR").off("click");
 	    $(".playerTwoCard").html(`P2 is ready. Riding as ${riderTwoPlayerChoice.name}`)
+	    $(".playerTwoDisplayRider").append($('<img id="Dumoulin_img" src="https://www.pezcyclingnews.com/wp-content/uploads/2018/07/tdf18st20tt-dumoulin-ride-920.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	});
 
@@ -241,6 +252,7 @@ function chooseRider() {
 	    $(".cardTwoBL").off("click");
 	    $(".cardTwoBR").off("click");
 	    $(".playerTwoCard").html(`P2 is ready. Riding as ${riderTwoPlayerChoice.name}`)
+	    $(".playerTwoDisplayRider").append($('<img id="Alaphilippe_img" src="https://pbs.twimg.com/profile_images/1080158395628425217/coQJnoK__400x400.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	});
 
@@ -259,6 +271,7 @@ function chooseRider() {
 	    $(".cardTwoBL").off("click");
 	    $(".cardTwoBR").off("click");
 	    $(".playerTwoCard").html(`P2 is ready. Riding as ${riderTwoPlayerChoice.name}`)
+	    $(".playerTwoDisplayRider").append($('<img id="Sagan_img" src="https://i.pinimg.com/originals/84/40/b8/8440b83694d9d3d69106db4395a738cd.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	});
 	    
@@ -431,23 +444,63 @@ class Player {
 	
 		this.playerStamina = 100;
 
-		$(`.${this.htmlPrefix}Stamina`).html(`Stamina: ${this.playerStamina}%`);
+		$(`.${this.htmlPrefix}Stamina`).html(`S</br>
+			t</br>
+			a</br>
+			m</br>
+			i</br>
+			n</br>
+			a</br>
+			</br>
+			${this.playerStamina}%`);
 
 		this.staminaCounter = setInterval(()=> {
 
 			if (this.paceButton === "attack" && this.playerStamina >= 0) {
-				$(`.${this.htmlPrefix}Stamina`).html(`Stamina: ${this.playerStamina--}%`);
+				$(`.${this.htmlPrefix}Stamina`).html(`S</br>
+			t</br>
+			a</br>
+			m</br>
+			i</br>
+			n</br>
+			a</br>
+			</br>
+			${this.playerStamina--}%`);
 
 			} else if (this.paceButton === "tempo") {
-				$(`.${this.htmlPrefix}Stamina`).html(`Stamina: ${this.playerStamina}%`); 
+				$(`.${this.htmlPrefix}Stamina`).html(`S</br>
+			t</br>
+			a</br>
+			m</br>
+			i</br>
+			n</br>
+			a</br>
+			</br>
+			${this.playerStamina}%`); 
 					
 			} else if (this.paceButton === "recover" && this.playerStamina <= 100) {
-					$(`.${this.htmlPrefix}Stamina`).html(`Stamina: ${this.playerStamina++}%`);
+					$(`.${this.htmlPrefix}Stamina`).html(`S</br>
+			t</br>
+			a</br>
+			m</br>
+			i</br>
+			n</br>
+			a</br>
+			</br>
+			${this.playerStamina++}%`);
 					
 			}
 				
 			if (this.playerStamina === 0){
-				$(`.${this.htmlPrefix}Stamina`).html(`Stamina: ${this.playerStamina}%`);
+				$(`.${this.htmlPrefix}Stamina`).html(`S</br>
+			t</br>
+			a</br>
+			m</br>
+			i</br>
+			n</br>
+			a</br>
+			</br>
+			${this.playerStamina}%`);
 				this.pPace = this.speed * 0.5; 
 				this.paceButton = "recover";
 				this.playerStamina++;
@@ -515,7 +568,7 @@ class Player {
 				this.distance--;
 				//console.log(this.distance);
 				//console.log("distance changed");
-				$(`.${this.htmlPrefix}DisplayDistance`).html(`distance remaining: ${this.distance}`);
+				$(`.${this.htmlPrefix}DisplayDistance`).html(`Finish in: ${this.distance}kms`);
 
 				this.courseMilanSR();
 				this.regSpeed();
@@ -565,23 +618,26 @@ class Player {
 			this.location = "descent";
 		} else if (distTrav >= 295 && distTrav < 298) {
 			this.location = "flat";
-		} else if (distTrav === this.totalDistance) {
-			//winner is declared
+		} else if (distTrav >= 298) {
+			
 		}
+
+		$(`.${this.htmlPrefix}Card`).html(this.location);
+		if (this.location = "climb") {
+			
+		}
+
 
 		//set an html element to contain this.location
 		//use an if block to set the picture
 
-
-
-		console.log("location: " + this.location);
 
 	}		
 }
 
 
 
-
+	// $(".cardOneTL", ".cardTwoTR").html(`.${this.htmlPrefix} has won`);
 
 
 
