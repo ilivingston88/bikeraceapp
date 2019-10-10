@@ -13,10 +13,17 @@ body {
 }
 
 #Froome_img, #Dumoulin_img, #Alaphilippe_img, #Sagan_img{
-	width: 90%;
+	width: 55%;
 	position: relative;
 	margin: 5px;
 
+}
+
+#Flats_img, #Climbs_img, #Descents_img{
+	max-width: 30%;
+	top: 50px;
+	margin: 5px;
+	position: absolute;
 }
 
 .playerOne {
@@ -184,7 +191,9 @@ body {
 
 }
 
-
+.playerTwoButtons {
+	grid-area: twobuttons;
+}
 
 .playerOneAttackButton, .playerOneTempoButton, .playerOneRecoverButton, .playerTwoAttackButton, .playerTwoTempoButton, .playerTwoRecoverButton {
 	height: 50px;
@@ -209,6 +218,18 @@ body {
 	background-color: #006FFF;
 }
 
+.playerTwoAttackButton {
+	background-color: #E60000;
+}
+
+.playerTwoTempoButton {
+	background-color: #FF8800;
+}
+
+.playerTwoRecoverButton {
+	background-color: #006FFF;
+}
+
 .playerOneDisplayDistance, .playerTwoDisplayDistance {
 	background-color: white;
 	border-width: 5px;
@@ -226,21 +247,7 @@ body {
 	grid-area: twodistance;
 }
 
-.playerTwoButtons {
-	grid-area: twobuttons;
-}
 
-.playerTwoAttackButton {
-	background-color: #E60000;
-}
-
-.playerTwoTempoButton {
-	background-color: #FF8800;
-}
-
-.playerTwoRecoverButton {
-	background-color: #006FFF;
-}
 
 
 

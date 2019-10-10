@@ -619,12 +619,26 @@ class Player {
 		} else if (distTrav >= 295 && distTrav < 298) {
 			this.location = "flat";
 		} else if (distTrav >= 298) {
-			
+			this.location = "finish"
 		}
 
-		$(`.${this.htmlPrefix}Card`).html(this.location);
-		if (this.location = "climb") {
-			
+		// $(`.${this.htmlPrefix}Card`).html(`terrain: ${this.location}`);
+
+		if (this.location === "flat") {
+			$(`.${this.htmlPrefix}Card`).html(`You're riding on ${this.location} terrain!`);
+			$(`.${this.htmlPrefix}Card`).append($('<img id="Flats_img" src="http://3.bp.blogspot.com/_r3qzljwt8Rk/TJQ20N6whFI/AAAAAAAAGFU/vs5KcV6YDCs/s1600/IMG_0704.JPG">'));
+
+		} else if (this.location === "climb") {
+			$(`.${this.htmlPrefix}Card`).html(`You've reached a ${this.location}!`);
+			$(`.${this.htmlPrefix}Card`).append($('<img id="Climbs_img" src="http://www.content.granfondoguide.com/images/gf-top-pro-climbs-Muro-di-Sormano-3.png">'));
+
+		} else if (this.location === "descent") {
+			$(`.${this.htmlPrefix}Card`).html(`The road is heading downhill. Get ready for a ${this.location}!`);
+			$(`.${this.htmlPrefix}Card`).append($('<img id="Descents_img" src="https://potovanja.over.net/wp-content/uploads/2016/04/Stelvio.jpg">'));
+
+		} else if (this.location === "finish") {
+			$(`.${this.htmlPrefix}Card`).html(`You've reached the finish, you WIN!`)
+			location.reload();
 		}
 
 
