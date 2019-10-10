@@ -1,7 +1,7 @@
 body {
-	background-color: #A1CDE1;
-	font-family: 'Turret Road', cursive;
+	font-family: 'Bungee', cursive;
 	font-size: 35%;
+	background-image: url("http://www.srm.de/fileadmin/user_upload/images/news/news_2013/TDF18_Mainpic.jpg")
 }
 
 .gamePlayContainer {
@@ -12,6 +12,19 @@ body {
 	grid-template-areas: "playerone playertwo"
 }
 
+#Froome_img, #Dumoulin_img, #Alaphilippe_img, #Sagan_img{
+	width: 55%;
+	position: relative;
+	margin: 5px;
+
+}
+
+#Flats_img, #Climbs_img, #Descents_img{
+	max-width: 30%;
+	top: 50px;
+	margin: 5px;
+	position: absolute;
+}
 
 .playerOne {
 	display: grid;
@@ -23,51 +36,6 @@ body {
 	"riderone onecard onecard"
 	"onestamina onecard onecard"
 	"onespeed onebuttons onedistance"
-}
-
-.playerOnerRider {
-	grid-area: riderone;
-}
-
-
-.playerOneCard {
-	grid-area: onecard;
-
-}
-
-.playerOneCardImage {
-	
-}
-
-.playerOneCardDescription {
-
-}
-
-.playerOneStamina {
-	grid-area: onestamina;
-}
-
-
-.playerOneSpeedDisplay{
-	grid-area: onespeed;
-}
-
-.playerOneButtons {
-	grid-area: onebuttons;
-
-}
-
-.attackButton, .tempoButton, .recoverButton {
-	height: 50px;
-	border-color: grey;
-	border-width: 5px;
-	
-}
-
-
-
-.playerOneDisplayDistance {
-	grid-area: onedistance;
 }
 
 .playerTwo {
@@ -82,50 +50,207 @@ body {
 	"twodistance twobuttons twospeed"
 }
 
-.playerTwoRider {
+.playerOneDisplayRider, .playerTwoDisplayRider {
+
+	font-size: 12px;
+	background-color: #51D528;
+	border-style: solid;
+	border-color: grey;
+	max-height: 50%;
+	margin: 5px;
+
+}
+
+.playerOneDisplayRider {
+	grid-area: riderone;
+	
+}
+
+.playerTwoDisplayRider {
 	grid-area: ridertwo;
+
+}
+
+.playerOneCard {
+	grid-area: onecard;
+	background-color: #C2C8F0;
+	color: #0702A8;
+	font-size: 12px;
+	border-style: solid;
+	border-color: grey;
+	margin: 2px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas:
+	"oneTL oneTR"
+	"oneBL oneBR"
 }
 
 .playerTwoCard {	
 	grid-area: twocard;
+	background-color: #C2C8F0;
+	color: #0702A8;
+	font-size: 12px;
+	border-style: solid;
+	border-color: grey;
+	margin: 2px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas:
+	"twoTL twoTR"
+	"twoBL twoBR"
 }
 
-.playerTwoCardImage {
+.cardOneTL {
+	grid-area: oneTL;
+	margin: 5px;
+}
+
+.cardOneTR {
+	grid-area: oneTR;
+	margin: 5px;
+}
+
+.cardOneBL {
+	grid-area: oneBL;
+	margin: 5px;
+}
+
+.cardOneBR {
+	grid-area: oneBR;
+	margin: 5px;
+}
+
+.cardTwoTL {
+	grid-area: twoTL;
+	margin: 5px;
+}
+
+.cardTwoTR {
+	grid-area: twoTR;
+	margin: 5px;
 
 }
 
-.playerTwoCardDescription {
+.cardTwoBL {
+	grid-area: twoBL;
+	margin: 5px;
+}
 
+.cardTwoBR {
+	grid-area: twoBR;
+	margin: 5px;
+
+}
+
+.playerOneStamina, .playerTwoStamina {
+	background: rgb(36,0,0);
+	background: linear-gradient(0deg, rgba(36,0,0,1) 0%, rgba(0,10,255,1) 0%, rgba(233,5,5,0.41359773371104813) 100%);
+	font-size: 18px;
+	color: black;
+	font-weight: bold;
+	border-color: grey;
+	border-width: 5px;
+	border-style: solid;
+	margin: 5px;
+	width: 80%;
+	text-align: center;
+}
+.playerOneStamina {
+	grid-area: onestamina;
+	
 }
 
 .playerTwoStamina {
 	grid-area: twostamina;
+	
 }
 
-.playerTwoSpeedDisplay {
+.playerOneDisplayPace, .playerTwoDisplayPace {
+	border-color: grey;
+	font-size: 15px;
+	background-color: #51D528;
+	border-width: 5px;
+	border-style: solid;
+	margin: 5px;
+	max-height: 50px;
+}
+
+.playerOneDisplayPace {
+	grid-area: onespeed;	
+}
+
+.playerTwoDisplayPace {
 	grid-area: twospeed;
 }
 
+.playerOneButtons {
+	grid-area: onebuttons;
+
+}
+
 .playerTwoButtons {
-
+	grid-area: twobuttons;
 }
 
-.playerTwoPaceAttack {
-	
-	
+.playerOneAttackButton, .playerOneTempoButton, .playerOneRecoverButton, .playerTwoAttackButton, .playerTwoTempoButton, .playerTwoRecoverButton {
+	height: 50px;
+	border-color: grey;
+	border-width: 5px;
+	border-style: solid;
+	margin: 5px;
+	font-size: 12px;
+	margin: auto;
+	text-align: center;
 }
 
-.playerTwoPaceTempo { 
-
+.playerOneAttackButton {
+	background-color: #E60000;
 }
 
-.playerTwoPaceRecover{
+.playerOneTempoButton {
+	background-color: #FF8800;
+}
 
+.playerOneRecoverButton {
+	background-color: #006FFF;
+}
+
+.playerTwoAttackButton {
+	background-color: #E60000;
+}
+
+.playerTwoTempoButton {
+	background-color: #FF8800;
+}
+
+.playerTwoRecoverButton {
+	background-color: #006FFF;
+}
+
+.playerOneDisplayDistance, .playerTwoDisplayDistance {
+	background-color: white;
+	border-width: 5px;
+	border-style: solid;
+	margin: 5px;
+	height: 50px;
+	font-size: 15px;
+}
+
+.playerOneDisplayDistance {
+	grid-area: onedistance;
 }
 
 .playerTwoDisplayDistance {
 	grid-area: twodistance;
 }
+
+
+
+
+
 
 
 
