@@ -7,7 +7,7 @@ http {
         listen <%= ENV["PORT"] %>;
 
         location / {
-            root /app/public; # Adjust to match your static files directory structure
+            root /app;
             index index.html;
             try_files $uri $uri/ =404;
         }
