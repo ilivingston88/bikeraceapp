@@ -16,12 +16,13 @@ body {
 	width: 55%;
 	position: relative;
 	margin: 5px;
+	width: 75%;
 
 }
 
-#Flats_img, #Climbs_img, #Descents_img{
+#Flats_img, #Climbs_img, #Descents_img, .Start_img {
 	max-width: 30%;
-	top: 50px;
+	top: 185px;
 	margin: 5px;
 	position: absolute;
 }
@@ -56,7 +57,7 @@ body {
 	background-color: #51D528;
 	border-style: solid;
 	border-color: grey;
-	max-height: 50%;
+	width: 85%;
 	margin: 5px;
 
 }
@@ -74,8 +75,9 @@ body {
 .playerOneCard {
 	grid-area: onecard;
 	background-color: #C2C8F0;
+	text-align: center;
 	color: #0702A8;
-	font-size: 12px;
+	font-size: 16px;
 	border-style: solid;
 	border-color: grey;
 	margin: 2px;
@@ -90,8 +92,9 @@ body {
 .playerTwoCard {	
 	grid-area: twocard;
 	background-color: #C2C8F0;
+	text-align: center;
 	color: #0702A8;
-	font-size: 12px;
+	font-size: 16px;
 	border-style: solid;
 	border-color: grey;
 	margin: 2px;
@@ -148,10 +151,10 @@ body {
 .playerOneStamina, .playerTwoStamina {
 	background: rgb(36,0,0);
 	background: linear-gradient(0deg, rgba(36,0,0,1) 0%, rgba(0,10,255,1) 0%, rgba(233,5,5,0.41359773371104813) 100%);
-	font-size: 18px;
-	color: black;
+	font-size: 20px;
+	color: white;
 	font-weight: bold;
-	border-color: grey;
+	border-color: black;
 	border-width: 5px;
 	border-style: solid;
 	margin: 5px;
@@ -169,13 +172,15 @@ body {
 }
 
 .playerOneDisplayPace, .playerTwoDisplayPace {
-	border-color: grey;
-	font-size: 15px;
-	background-color: #51D528;
+	border-color: black;
+	font-size: 25px;
+	background-color: #006FFF;
 	border-width: 5px;
 	border-style: solid;
 	margin: 5px;
 	max-height: 50px;
+	text-align: center;
+	color: black;
 }
 
 .playerOneDisplayPace {
@@ -197,9 +202,9 @@ body {
 
 .playerOneAttackButton, .playerOneTempoButton, .playerOneRecoverButton, .playerTwoAttackButton, .playerTwoTempoButton, .playerTwoRecoverButton {
 	height: 50px;
-	border-color: grey;
 	border-width: 5px;
 	border-style: solid;
+	border-color: black;
 	margin: 5px;
 	font-size: 12px;
 	margin: auto;
@@ -231,12 +236,15 @@ body {
 }
 
 .playerOneDisplayDistance, .playerTwoDisplayDistance {
-	background-color: white;
+	background-color: black;
+	color: red;
+	text-align: center;
 	border-width: 5px;
 	border-style: solid;
+	border-color: grey;
 	margin: 5px;
 	height: 50px;
-	font-size: 15px;
+	font-size: 20px;
 }
 
 .playerOneDisplayDistance {

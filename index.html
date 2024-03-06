@@ -31,7 +31,7 @@
 			<div class="playerOneStamina">Stamina: </div>
 			<div class="playerOneDisplayPace">P1Pace</div>
 
-			<div class="buttons playerOneButtons">
+			<div class="button playerOneButtons">
 				<div class="button playerOneAttackButton">P1Attack</div>
 				<div class="button playerOneTempoButton">P1Tempo</div>
 				<div class="button playerOneRecoverButton">P1Recover</div>
@@ -48,7 +48,7 @@
 
 			<div class="playerTwoDisplayRider">P2Rider</div>
 
-			<div class="playerTwoCard">
+			<div (keydown)="onKeydown($event)" class="playerTwoCard">
 				<div class="cardTwoTL">twoTL</div>
 				<div class ="cardTwoTR">twoTR</div>
 				<div class="cardTwoBL">twoBL</div>

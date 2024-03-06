@@ -176,7 +176,7 @@ function chooseRider() {
 	    $(".cardOneBL").off("click");
 	    $(".cardOneBR").off("click");
 	    $(".playerOneCard").html(`P1 is ready. Riding as ${riderOnePlayerChoice.name}`)
-	    $(".playerOneDisplayRider").append($('<img id="Alaphilippe_img" src="https://pbs.twimg.com/profile_images/1080158395628425217/coQJnoK__400x400.jpg">'));
+	    $(".playerOneDisplayRider").append($('<img id="Alaphilippe_img" src="https://www.vnews.com/getattachment/d29eb168-6b5f-4253-b96f-867e66da5dfe/cyctour-gjf-vn-072219-ph07">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	});
 
@@ -252,7 +252,7 @@ function chooseRider() {
 	    $(".cardTwoBL").off("click");
 	    $(".cardTwoBR").off("click");
 	    $(".playerTwoCard").html(`P2 is ready. Riding as ${riderTwoPlayerChoice.name}`)
-	    $(".playerTwoDisplayRider").append($('<img id="Alaphilippe_img" src="https://pbs.twimg.com/profile_images/1080158395628425217/coQJnoK__400x400.jpg">'));
+	    $(".playerTwoDisplayRider").append($('<img id="Alaphilippe_img" src="https://www.vnews.com/getattachment/d29eb168-6b5f-4253-b96f-867e66da5dfe/cyctour-gjf-vn-072219-ph07">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	});
 
@@ -285,10 +285,10 @@ function startGame(riderOnePlayerChoice, riderTwoPlayerChoice) {
 		console.log(`begin!`);
 
 	let playerOne = new Player(riderOnePlayerChoice.name, riderOnePlayerChoice.flats,
-		riderOnePlayerChoice.climbs, riderOnePlayerChoice.descents, 'playerOne');
+		riderOnePlayerChoice.climbs, riderOnePlayerChoice.descents, 'playerOne', 1);
 
 	let playerTwo = new Player(riderTwoPlayerChoice.name, riderTwoPlayerChoice.flats,
-		riderTwoPlayerChoice.climbs, riderOnePlayerChoice.descents, 'playerTwo');
+		riderTwoPlayerChoice.climbs, riderOnePlayerChoice.descents, 'playerTwo', 2);
 
 	//playerOne.riderSkills();
 	//playerTwo.riderSkills();
@@ -300,7 +300,7 @@ function startGame(riderOnePlayerChoice, riderTwoPlayerChoice) {
 
 //creating player classes (p1 and p2)
 class Player {
-	constructor(name, flats, climbs, descents, htmlPrefix) {
+	constructor(name, flats, climbs, descents, htmlPrefix, playerNumber) {
 		this.name = name;
 		this.flats = flats;
 		this.climbs = climbs;
@@ -315,6 +315,7 @@ class Player {
 		this.location = location;
 		this.htmlPrefix = htmlPrefix;
 		this.distanceInterval;
+		this.playerNumber = playerNumber;
 
 
 		this.courseMilanSR();
@@ -330,9 +331,19 @@ class Player {
 		// 	this.regSpeed();
 		// }, 100);
 	}
-
+/// THIS CODE WORKS FOR CLICKS
 	createEventListeners() {
 		//buttons
+		this.pacing("tempo");
+
+
+// $(`html`).on("keypress", (e) => {
+// 		console.log("keypress");
+// 		if (this.playerNumber === 1 && $(e.code) === "KeyQ") {
+// 		this.pacing("attack");
+// 		}
+// 	});
+
 	$(`.${this.htmlPrefix}AttackButton`).on('click', () => {
 		
 		this.pacing("attack");
@@ -532,7 +543,6 @@ class Player {
 				this.pPace = 0;
 				this.paceButton = "none";
 			default:
-				console.log("ERROR: unknown pacing requested");
 		}
 
 		
@@ -543,7 +553,7 @@ class Player {
 		console.log("this.pPace before: " + this.pPace);
 		this.pPace = Math.floor(this.pPace);
 		console.log("this.pPace after: " + this.pPace);
-		$(`.${this.htmlPrefix}DisplayPace`).html(`pace: ${this.pPace}km/h`);
+		$(`.${this.htmlPrefix}DisplayPace`).html(`${this.pPace} km/h`);
 		//this.pPace = this.speed;
 		this.stamina = this.staminaDecrease; 
 		this.distanceDisplay();
@@ -638,7 +648,10 @@ class Player {
 
 		} else if (this.location === "finish") {
 			$(`.${this.htmlPrefix}Card`).html(`You've reached the finish, you WIN!`)
+			alert(`.${this.htmlPrefix} has won the game. Click OK to restart`);
 			location.reload();
+
+
 		}
 
 
