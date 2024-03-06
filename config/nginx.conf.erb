@@ -1,5 +1,6 @@
 server {
+    # Log the value of PORT
+    error_log /dev/stdout info "PORT: <%= ENV['PORT'] %>";
     listen <%= ENV['PORT'] %>;
-    error_log  /dev/stdout info;
     ...
 }
