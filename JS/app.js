@@ -1,7 +1,3 @@
-// <img style="height: 50px;" id="Froome_img" src="https://cdn.pixabay.com/photo/2019/09/26/13/35/chris-froome-4505981_960_720.jpg">
-// 		<img style="height: 50px;" id="Dumoulin_img" src="https://c1.staticflickr.com/9/8653/16787592252_f4172c5ccb_b.jpg">
-// 		<img style="height: 50px;" id="Alaphilippe_img" src="https://upload.wikimedia.org/wikipedia/commons/f/f6/2018_Tour_of_Britain_stage_3_-_stage_winner_Julian_Alaphilippe_%28cropped%29.JPG">
-// 		<img style="height: 50px;" id="Sagan_img" src="https://upload.wikimedia.org/wikipedia/commons/0/05/Peter_Sagan_Tour_de_France_2017.jpg">
 
 
 //Array of available characters to choose from.
@@ -32,7 +28,7 @@ const ridersArray = [
 ]
 
 
-//Global variables:
+//Global variables | unnecessary?
 let name;
 let flats;
 let climbs;
@@ -46,8 +42,8 @@ let distance;
 let totalDistance;
 let distTrav = totalDistance - distance;
 
-let pPace;
-let paceButton;
+// let pPace;
+// let paceButton;
 //setting player choices as false
 let riderOnePlayerChoice = false;
 let riderTwoPlayerChoice = false;
@@ -137,7 +133,7 @@ function chooseRider() {
 	    $(".cardOneBL").off("click");
 	    $(".cardOneBR").off("click");
 	    $(".cardOneTL").html(`P1 is ready. Riding as ${riderOnePlayerChoice.name}`)
-	    $(".playerOneDisplayRider").append($('<img id="Froome_img" src="https://cdn.pixabay.com/photo/2019/09/26/13/35/chris-froome-4505981_960_720.jpg">'));
+	    $(".playerOneDisplayRider").append($('<img id="Froome_img" src="/assets/chris-froome-4505981_960_720.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	 });
 
@@ -157,7 +153,7 @@ function chooseRider() {
 	    $(".cardOneBL").off("click");
 	    $(".cardOneBR").off("click");
 	    $(".playerOneCard").html(`P1 is ready. Riding as ${riderOnePlayerChoice.name}`)
-	    $(".playerOneDisplayRider").append($('<img " id="Dumoulin_img" src="https://www.pezcyclingnews.com/wp-content/uploads/2018/07/tdf18st20tt-dumoulin-ride-920.jpg">'));
+	    $(".playerOneDisplayRider").append($('<img " id="Dumoulin_img" src="assets/16787592252_f4172c5ccb_b.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	});
 
@@ -176,7 +172,7 @@ function chooseRider() {
 	    $(".cardOneBL").off("click");
 	    $(".cardOneBR").off("click");
 	    $(".playerOneCard").html(`P1 is ready. Riding as ${riderOnePlayerChoice.name}`)
-	    $(".playerOneDisplayRider").append($('<img id="Alaphilippe_img" src="https://www.vnews.com/getattachment/d29eb168-6b5f-4253-b96f-867e66da5dfe/cyctour-gjf-vn-072219-ph07">'));
+	    $(".playerOneDisplayRider").append($('<img id="Alaphilippe_img" src="assets/alaphillippe.jpg'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	});
 
@@ -195,7 +191,7 @@ function chooseRider() {
 	    $(".cardOneBL").off("click");
 	    $(".cardOneBR").off("click");
 	    $(".playerOneCard").html(`P1 is ready. Riding as ${riderOnePlayerChoice.name}`)
-	    $(".playerOneDisplayRider").append($('<img id="Sagan_img" src="https://i.pinimg.com/originals/84/40/b8/8440b83694d9d3d69106db4395a738cd.jpg">'));
+	    $(".playerOneDisplayRider").append($('<img id="Sagan_img" src="assets/Peter_Sagan_Tour_de_France_2017.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice); 
 	});
 
@@ -214,7 +210,7 @@ function chooseRider() {
 	    $(".cardTwoBL").off("click");
 	    $(".cardTwoBR").off("click");
 	    $(".playerTwoCard").html(`P2 is ready. Riding as ${riderTwoPlayerChoice.name}`)
-	    $(".playerTwoDisplayRider").append($('<img id="Froome_img" src="https://cdn.pixabay.com/photo/2019/09/26/13/35/chris-froome-4505981_960_720.jpg">'));
+	    $(".playerTwoDisplayRider").append($('<img id="Froome_img" src="assets/chris-froome-4505981_960_720.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);  
 	});
 
@@ -233,7 +229,7 @@ function chooseRider() {
 	    $(".cardTwoBL").off("click");
 	    $(".cardTwoBR").off("click");
 	    $(".playerTwoCard").html(`P2 is ready. Riding as ${riderTwoPlayerChoice.name}`)
-	    $(".playerTwoDisplayRider").append($('<img id="Dumoulin_img" src="https://www.pezcyclingnews.com/wp-content/uploads/2018/07/tdf18st20tt-dumoulin-ride-920.jpg">'));
+	    $(".playerTwoDisplayRider").append($('<img id="Dumoulin_img" src="assets/16787592252_f4172c5ccb_b.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	});
 
@@ -252,7 +248,7 @@ function chooseRider() {
 	    $(".cardTwoBL").off("click");
 	    $(".cardTwoBR").off("click");
 	    $(".playerTwoCard").html(`P2 is ready. Riding as ${riderTwoPlayerChoice.name}`)
-	    $(".playerTwoDisplayRider").append($('<img id="Alaphilippe_img" src="https://www.vnews.com/getattachment/d29eb168-6b5f-4253-b96f-867e66da5dfe/cyctour-gjf-vn-072219-ph07">'));
+	    $(".playerTwoDisplayRider").append($('<img id="Alaphilippe_img" src="assets/alaphillippe.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	});
 
@@ -271,7 +267,7 @@ function chooseRider() {
 	    $(".cardTwoBL").off("click");
 	    $(".cardTwoBR").off("click");
 	    $(".playerTwoCard").html(`P2 is ready. Riding as ${riderTwoPlayerChoice.name}`)
-	    $(".playerTwoDisplayRider").append($('<img id="Sagan_img" src="https://i.pinimg.com/originals/84/40/b8/8440b83694d9d3d69106db4395a738cd.jpg">'));
+	    $(".playerTwoDisplayRider").append($('<img id="Sagan_img" src="assets/Peter_Sagan_Tour_de_France_2017.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	});
 	    
@@ -290,8 +286,23 @@ function startGame(riderOnePlayerChoice, riderTwoPlayerChoice) {
 	let playerTwo = new Player(riderTwoPlayerChoice.name, riderTwoPlayerChoice.flats,
 		riderTwoPlayerChoice.climbs, riderOnePlayerChoice.descents, 'playerTwo', 2);
 
-	//playerOne.riderSkills();
-	//playerTwo.riderSkills();
+        // Register global keyboard event listener once when the game starts.
+        // This approach avoids duplicate listeners and separates control logic from player initialization.
+        document.addEventListener('keydown', (event) => {
+            // Player One Controls
+            if (['a', 's', 'd'].includes(event.key)) {
+                // Map the keys to specific actions.
+                const action = event.key === 'a' ? 'attack' : event.key === 's' ? 'tempo' : 'recover';
+                playerOne.pacing(action);
+            }
+
+            // Player Two Controls
+            if (['j', 'k', 'l'].includes(event.key)) {
+                // Map the keys to specific actions.
+                const action = event.key === 'j' ? 'attack' : event.key === 'k' ? 'tempo' : 'recover';
+                playerTwo.pacing(action);
+            }
+        });
 
 	console.log(`p1 ${playerOne.name}, p2 ${playerTwo.name}`)
 	}
