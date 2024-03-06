@@ -10,4 +10,4 @@ PORT="${PORT:-3000}"  # Default to port 3000 if PORT is not set
 export PORT
 
 # Start NGINX with the provided configuration file
-nginx -c "$DIR/nginx.conf.erb"
+"$DIR"/nginx -c "$DIR"/nginx.conf.erb
