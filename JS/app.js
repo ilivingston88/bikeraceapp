@@ -133,7 +133,7 @@ function chooseRider() {
 	    $(".cardOneBL").off("click");
 	    $(".cardOneBR").off("click");
 	    $(".cardOneTL").html(`P1 is ready. Riding as ${riderOnePlayerChoice.name}`)
-	    $(".playerOneDisplayRider").append($('<img id="Froome_img" src="/assets/chris-froome-4505981_960_720.jpg">'));
+	    $(".playerOneDisplayRider").append($('<img id="Froome_img" src="assets/chris-froome-4505981_960_720.jpg">'));
 	    startGame(riderOnePlayerChoice, riderTwoPlayerChoice);
 	 });
 
@@ -647,15 +647,15 @@ class Player {
 
 		if (this.location === "flat") {
 			$(`.${this.htmlPrefix}Card`).html(`You're riding on ${this.location} terrain!`);
-			$(`.${this.htmlPrefix}Card`).append($('<img id="Flats_img" src="http://3.bp.blogspot.com/_r3qzljwt8Rk/TJQ20N6whFI/AAAAAAAAGFU/vs5KcV6YDCs/s1600/IMG_0704.JPG">'));
+			$(`.${this.htmlPrefix}Card`).append($('<img id="Flats_img" src="assets/IMG_0704.JPG">'));
 
 		} else if (this.location === "climb") {
 			$(`.${this.htmlPrefix}Card`).html(`You've reached a ${this.location}!`);
-			$(`.${this.htmlPrefix}Card`).append($('<img id="Climbs_img" src="http://www.content.granfondoguide.com/images/gf-top-pro-climbs-Muro-di-Sormano-3.png">'));
+			$(`.${this.htmlPrefix}Card`).append($('<img id="Climbs_img" src="assets/sa-calobra-climb-mallorca-cycling.jpg">'));
 
 		} else if (this.location === "descent") {
 			$(`.${this.htmlPrefix}Card`).html(`The road is heading downhill. Get ready for a ${this.location}!`);
-			$(`.${this.htmlPrefix}Card`).append($('<img id="Descents_img" src="https://potovanja.over.net/wp-content/uploads/2016/04/Stelvio.jpg">'));
+			$(`.${this.htmlPrefix}Card`).append($('<img id="Descents_img" src="assets/Stelvio.jpg">'));
 
 		} else if (this.location === "finish") {
 			$(`.${this.htmlPrefix}Card`).html(`You've reached the finish, you WIN!`)
