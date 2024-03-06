@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Set the directory where the script resides
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Start NGINX with the port provided by Heroku
+PORT="${PORT:-3000}"  # Default to port 3000 if PORT is not set
+
+# Export the PORT variable so NGINX can access it
+export PORT
+
+# Start NGINX with the provided configuration file
+nginx -c "$DIR/nginx.conf.erb"
