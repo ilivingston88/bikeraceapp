@@ -1,1 +1,1 @@
-web: bin/start-nginx $PORT
+web: bin/start-nginx

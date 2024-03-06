@@ -1,6 +1,21 @@
 server {
-    # Log the value of PORT
-    error_log /dev/stdout info "PORT: <%= ENV['PORT'] %>";
-    listen <%= ENV['PORT'] %>;
-    ...
+    listen <%= ENV["PORT"] %>;
+    server_name _;
+    root /app; # This is typically the root directory in Heroku's file system
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /assets/ {
+        alias /app/assets/; # Assuming 'assets' is directly under your project root
+    }
+
+    location /css/ {
+        alias /app/css/; # Assuming 'css' is directly under your project root
+    }
+
+    location /js/ {
+        alias /app/js/; # Assuming 'js' is directly under your project root
+    }
 }
